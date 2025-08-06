@@ -15,4 +15,4 @@ class Lyrics(models.Model):
     lyrics = models.TextField()
     
     def __str__(self):
-        return f'Lyrics for {self.song.title}'
+        return f'Lyrics for {self.song.title}, by {self.song.artist}'
