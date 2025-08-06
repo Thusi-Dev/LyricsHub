@@ -16,7 +16,8 @@ class LyricsList(generics.ListCreateAPIView):
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .music_recognition import recognize_song
+
+#from .music_recognition import recognize_song
 #Minimalistic display
 #class MusicRecognitionView(APIView):
 #    def post(self, request):
@@ -25,7 +26,7 @@ from .music_recognition import recognize_song
 
 from .lyrics_fetcher import fetch_lyrics
 
-class MusicRecognitionView(APIView):
+'''class MusicRecognitionView(APIView):
     def post(self, request):
         audio_data = request.data['audio_data']
         result = recognize_song(audio_data)
@@ -46,6 +47,41 @@ class MusicRecognitionView(APIView):
             return Response(song_metadata)
         else:
             return Response({'error': 'Song not recognized'}, status=400)
+
+'''
+
+from .music_recognition import MusicRecognizer
+class MusicRecognitionView(APIView):
+    def post(self, request):
+        recognizer = MusicRecognizer()
+
+        audio_file = request.FILES.get('audio_file')
+        if not audio_file:
+            return Response({'error': 'No audio file provided'}, status=400)
+
+        result = recognizer.recognize_song(audio_file)
+        if result:
+            song_title = result.get('title')
+            song_artist = result.get('artist')
+
+            song, created = Song.objects.get_or_create(title=song_title, artist=song_artist)
+
+            lyrics_obj, lyrics_created = Lyrics.objects.get_or_create(song=song)
+            if lyrics_created:
+                lyrics_obj.lyrics = fetch_lyrics(song_title, song_artist)
+                lyrics_obj.save()
+
+            return Response({
+                'result': {
+                    'full_title': f'{song_title} by {song_artist}',
+                    'title': song_title,
+                    'artist': song_artist,
+                    'lyrics': lyrics_obj.lyrics,
+                }
+            })
+        else:
+            return Response({'error': 'Failed to recognize song'}, status=500)
+
 
 class LyricsView(APIView):
     def get(self, request, song_id):
