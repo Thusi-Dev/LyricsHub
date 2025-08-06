@@ -39,12 +39,17 @@ A Django-based web application for users to explore, contribute, and edit song l
                            
 1. Start the development server: `python manage.py runserver`
 2. Access the application at `http://localhost:8000`
+   
+## APIs Used
+LyricsHub uses the following APIs to enhance its functionality:
 
-### API Keys
+* **Genius API**: Used for retrieving song lyrics and metadata. The Genius API provides access to a vast database of song lyrics, which we use to populate our platform and provide users with accurate lyrics.
+* **AudD API**: Used for music recognition. The AudD API allows us to identify songs based on audio samples, which we use in our music recognition feature to help users find songs and lyrics.
+  
 To use the Genius API and AudD API, you'll need to obtain API keys and configure them in your `settings.py` file. Here's how:
 
-* Genius API: Create an account on [Genius](https://genius.com/api-clients) and obtain an API key. Add the following to your `settings.py` file: `GENIUS_API_TOKEN = 'your-api-key'`
-* AudD API: Create an account on [AudD](https://audd.io/api/) and obtain an API key. Add the following to your `settings.py` file: `AUDD_API_TOKEN = 'your-api-key'`
+* *Genius API*: Create an account on [Genius](https://genius.com/api-clients) and obtain an API key. Add the following to your `settings.py` file: `GENIUS_API_TOKEN = 'your-api-key'`
+* *AudD API*: Create an account on [AudD](https://audd.io/api/) and obtain an API key. Add the following to your `settings.py` file: `AUDD_API_TOKEN = 'your-api-key'`
 
 ## Contributing
 We welcome contributions to LyricsHub! If you'd like to contribute, please follow these guidelines:
