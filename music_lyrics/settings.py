@@ -18,6 +18,7 @@ load_dotenv()
 
 AUDD_API_TOKEN = os.environ.get('AUDD_API_TOKEN')
 GENIUS_API_TOKEN = os.getenv('GENIUS_API_TOKEN')
+AUDIOTAG_API_TOKEN = os.getenv('AUDIOTAG_API_TOKEN')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
