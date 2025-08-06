@@ -58,3 +58,8 @@ class SongView(APIView):
         song = Song.objects.get(id=song_id)
         # Return the song URL or audio data
         return Response({'url': song.url})
+        
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("Welcome to the Lyrics Hub!")
