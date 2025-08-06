@@ -66,9 +66,12 @@ We welcome contributions to LyricsHub! If you'd like to contribute, please follo
 LyricsHub is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Acknowledgments
-* Thanks to the Django community for their excellent framework.
-* Thanks to Genius and AudD for providing APIs for lyrics retrieval.
-* Thanks to all contributors and users of LyricsHub.
+We would like to thank the following projects and organizations for their contributions to LyricsHub:
+
+* **Django**: For providing an excellent framework for building web applications.
+* **Genius**: For providing an API for accessing song lyrics and metadata.
+* **AudD**: For providing an API for music recognition.
+* **All contributors and users of LyricsHub**: For their support and contributions to the project.
 
 ## Roadmap
 * Improve lyrics accuracy and completeness through machine learning algorithms.
